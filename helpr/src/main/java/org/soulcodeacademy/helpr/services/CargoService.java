@@ -18,6 +18,7 @@ public class CargoService {
         // retorna os dados da tabela em forma de lista (SELECT * FROM cargo)
         return this.cargoRepository.findAll();
     }
+
     // Listar um pelo ID
     public Cargo getCargo(Integer idCargo){
         //SELECT * FROM cargo WHERE idCargo = ?
@@ -31,6 +32,7 @@ public class CargoService {
             return cargo.get(); // Extrair o cargo de dentro do optional
         }
     }
+
     // Salvar
     public Cargo salvar(Cargo novoCargo){
         novoCargo.setIdCargo(null); // limpar o campo id para não substituir
@@ -40,7 +42,23 @@ public class CargoService {
         return cargoSalvo;
     }
 
+    // Atualizar - precisa do ID do cargo e dos dados atualizados
+    public Cargo atualizar(Integer idCargo, Cargo novoCargo){
+        // verificar se o cargo existe mesmo
+        Cargo cargoAtual = this.getCargo(idCargo);
 
-    // Atualizar
+        cargoAtual.setNome(novoCargo.getNome());
+        cargoAtual.setDescricao(novoCargo.getDescricao());
+        cargoAtual.setSalario(novoCargo.getSalario());
+
+        Cargo cargoAtualizado = this.cargoRepository.save(cargoAtual); // atualiza a entidade pois ela possui um id diferente de nulo
+
+        return cargoAtualizado;
+    }
     // Deletar
+    public void deletar(Integer idCargo){
+        Cargo cargo = this.getCargo(idCargo);
+
+        this.cargoRepository.delete(cargo);
+    }
 }

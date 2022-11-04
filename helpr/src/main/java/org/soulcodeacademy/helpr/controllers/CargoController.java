@@ -47,5 +47,18 @@ public class CargoController {
         return salvo; // a resposta será o cargo inserido
     }
 
+    // mapeia requisições do verbo PUT
+    @PutMapping("/cargos/{idCargo}") // ex: /cargo/5
+    public Cargo atualizar(@PathVariable Integer idCargo, @RequestBody Cargo cargo){
+
+        Cargo atualizado = this.cargoService.atualizar(idCargo, cargo);
+        return atualizado;
+    }
+
+    @DeleteMapping("/cargos/{idCargo}") // verbo DELETE no /cargo/2 (ex.)
+    public void deletar(@PathVariable Integer idCargo){
+        this.cargoService.deletar(idCargo);
+
+    }
 
 }
