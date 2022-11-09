@@ -4,7 +4,7 @@ import javax.persistence.*; // JPA = JAVA PERSISTENCE API
 
 // Transformar a classe em uma entidade/tabela no banco
 @Entity
-public class Cargo { // nome da tabela = cargo
+public class Cargo{ // nome da tabela = cargo
     @Id // PRIMARY KEY
     @GeneratedValue(strategy = GenerationType.IDENTITY) // AUTO_INCREMENT
     private Integer idCargo; // será a chave primária da tabela

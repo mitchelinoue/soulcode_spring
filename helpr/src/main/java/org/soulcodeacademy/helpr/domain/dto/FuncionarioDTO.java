@@ -9,8 +9,8 @@ import javax.validation.constraints.NotNull;
 public class FuncionarioDTO extends UsuarioDTO{
     private String foto;
 
-    @NotNull(message = "idCargo é obrigatório")
-    private Integer idCargo;
+    @NotNull(message = "cargo é obrigatório")
+    private Integer IdCargo;
 
     public String getFoto() {
         return foto;
@@ -20,11 +20,9 @@ public class FuncionarioDTO extends UsuarioDTO{
         this.foto = foto;
     }
 
-    public Integer getIdCargo() {
-        return idCargo;
-    }
+    public Integer getIdCargo() { return IdCargo; }
 
-    public void setIdCargo(Integer idCargo) {
-        this.idCargo = idCargo;
+    public void setIdCargo(Integer IdCargo) {
+        this.IdCargo = IdCargo;
     }
 }
