@@ -57,4 +57,5 @@ public class Cargo{ // nome da tabela = cargo
     public void setSalario(Double salario) {
         this.salario = salario;
     }
+
 }

@@ -19,11 +19,13 @@ public class ClienteController {
 
     @GetMapping("/clientes")
     public List<Cliente> listar(){
+
         return this.clienteService.listar();
     }
 
     @GetMapping("/clientes/{id}")
     public Cliente getCliente(@PathVariable Integer id){
+
         return this.clienteService.getCliente(id);
     }
 
@@ -41,8 +43,9 @@ public class ClienteController {
         return clienteAtualizado;
     }
 
-    @DeleteMapping("clientes/{idCliente}")
+    @DeleteMapping("/clientes/{idCliente}")
     public void deletar(@PathVariable Integer idCliente){
+
         this.clienteService.deletar(idCliente);
     }
 

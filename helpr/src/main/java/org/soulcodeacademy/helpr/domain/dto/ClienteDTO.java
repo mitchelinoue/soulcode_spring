@@ -4,7 +4,7 @@ import javax.validation.constraints.NotBlank;
 
 public class ClienteDTO extends UsuarioDTO{
 
-    @NotBlank
+    @NotBlank(message = "telefone obrigatório")
     private String telefone;
 
     public String getTelefone() {
