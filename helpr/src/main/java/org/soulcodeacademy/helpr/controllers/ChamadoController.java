@@ -5,9 +5,11 @@ import org.soulcodeacademy.helpr.domain.dto.ChamadoDTO;
 import org.soulcodeacademy.helpr.domain.enums.StatusChamado;
 import org.soulcodeacademy.helpr.services.ChamadoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -65,6 +67,14 @@ public class ChamadoController {
         return this.chamadoService.listarPorStatus(batata);
     }
 
+    //Listar por data (intervalo) -> /chamados/intervalo?inicio=2022-01-20&fim=2022-12-01
+    @GetMapping("/chamados/intervalo")
+    public List<Chamado> listarPorIntervaloDatas(
+            @RequestParam @DateTimeFormat(iso=DateTimeFormat.ISO.DATE) LocalDate inicio,
+            @RequestParam @DateTimeFormat(iso=DateTimeFormat.ISO.DATE) LocalDate fim
+    ){
+        return this.chamadoService.lisarPorIntervaloDatas(inicio, fim);
+    }
 
 
 }

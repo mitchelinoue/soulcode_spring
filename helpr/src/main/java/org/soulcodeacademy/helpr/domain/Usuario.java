@@ -5,7 +5,7 @@ import org.soulcodeacademy.helpr.domain.enums.Perfil;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Usuários") // coloca o nome específico na tabela, e não o nome da classe
+@Table(name = "Usuarios") // coloca o nome específico na tabela, e não o nome da classe
 public abstract class Usuario { // abstract não deixa criar objetos dessa class, já que essa é uma classe pai. Usuário será funcionário ou cliente
 
     @Id // torna o campo abaixo em uma primary key
