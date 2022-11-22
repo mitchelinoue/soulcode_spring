@@ -10,7 +10,9 @@ import java.util.Optional;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
+
     Optional<Usuario> findByEmail(String email); // WHERE email = email
+
     Optional<Usuario> findByCpf(String cpf); // WHERE cpf = cpf
 
     List<Usuario> findByNomeContaining(String nome); // filtrar pelo nome
