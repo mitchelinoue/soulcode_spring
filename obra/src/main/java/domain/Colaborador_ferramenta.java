@@ -1,3 +1,5 @@
+package domain;
+
 public class Colaborador_ferramenta {
     private int idColaboradorFerramenta;
     private int idColaborador;

@@ -38,6 +38,7 @@ public class CargoController {
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_FUNCIONARIO')") //somente funcionario e admin podem acessar
     @GetMapping("/cargos/{idCargo}") // indica que o valor após a barra é dinâmico
     public Cargo getCargo(@PathVariable Integer idCargo){ // @PathVariable -> extrai do endpoint o valor dinâmico
+
         return this.cargoService.getCargo(idCargo);
     }
 

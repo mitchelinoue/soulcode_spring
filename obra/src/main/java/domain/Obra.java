@@ -1,16 +1,29 @@
+package domain;
+
+import javax.persistence.*;
 import java.time.LocalDate;
 
 public class Obra {
-    private int idObra;
-    private String nomeObra;
-    private double orcamentoObra;
-    private LocalDate prazoObra;
 
-    public Obra(int idObra, String nomeObra, double orcamentoObra, LocalDate prazoObra) {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer idObra;
+
+    @Column(nullable = false, length = 120)
+    private String nomeObra;
+
+    @Column(nullable = false)
+    private double orcamentoObra;
+    private LocalDate prazoObra = LocalDate.EPOCH.plusYears(3);
+
+    @OneToOne
+    @JoinColumn(name = "id_engenheiro", nullable = false)
+    private Engenheiro engenheiro;
+
+    public Obra(Integer idObra, String nomeObra, double orcamentoObra) {
         this.idObra = idObra;
         this.nomeObra = nomeObra;
         this.orcamentoObra = orcamentoObra;
-        this.prazoObra = prazoObra;
     }
 
     public int getIdObra() {

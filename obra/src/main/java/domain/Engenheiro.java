@@ -1,18 +1,32 @@
-public class Engenheiro {
-    private int idEngenheiro;
-    private String nomeEngenheiro;
-    private int idadeEngenheiro;
-    private String email;
-    private double salario;
-    private int idObra;
+package domain;
 
-    public Engenheiro(int idEngenheiro, String nomeEngenheiro, int idadeEngenheiro, String email, double salario, int idObra) {
+import javax.persistence.*;
+
+@Entity
+public class Engenheiro {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer idEngenheiro;
+
+    @Column(nullable = false, length = 120)
+    private String nomeEngenheiro;
+
+    @Column(nullable = false)
+    private int idadeEngenheiro;
+
+    @Column(nullable = false, length = 120)
+    private String email;
+
+    @Column(nullable = false)
+    private double salario;
+
+    public Engenheiro(Integer idEngenheiro, String nomeEngenheiro, int idadeEngenheiro, String email, double salario) {
         this.idEngenheiro = idEngenheiro;
         this.nomeEngenheiro = nomeEngenheiro;
         this.idadeEngenheiro = idadeEngenheiro;
         this.email = email;
         this.salario = salario;
-        this.idObra = idObra;
     }
 
     public int getIdEngenheiro() {
@@ -79,9 +93,9 @@ public class Engenheiro {
 
     }
 
-    public int getIdObra() {
-        return idObra;
-    }
+//    public int getIdObra() {
+//        return idObra;
+//    }
 
 //    public void setIdObra(int idObra) {
 //        this.idObra = idObra;

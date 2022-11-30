@@ -1,3 +1,5 @@
+package domain;
+
 public class Ferramenta {
     private int idFerramenta;
     private String nomeFerramenta;
