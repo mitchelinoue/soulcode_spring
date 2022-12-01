@@ -22,11 +22,23 @@ public class EmpregadoController {
 
     @GetMapping("/empregados/{idEmpregado}")
     public Empregado getEmpregadoCont(@PathVariable Integer idEmpregado){ // listar por id
-        return this.empregadoService.getEmpregadoServ(idEmpregado);
+        return this.empregadoService.listarEmpregadoIdServ(idEmpregado);
     }
 
     @PostMapping("/empregados")
-    public Empregado salvarCont(@Valid @RequestBody EmpregadoDTO dto){
-        return this.empregadoService.salvarServ(dto);
+    public Empregado salvarEmpregadoCont(@Valid @RequestBody EmpregadoDTO dto){
+        return this.empregadoService.salvarEmpregadoServ(dto);
     }
+
+    @PutMapping("/empregados/{idEmpregado}")
+    public Empregado atualizarEmpregadoCont(@PathVariable Integer idEmpregado, @Valid @RequestBody EmpregadoDTO dto){
+        return this.empregadoService.atualizarEmpregadoServ(idEmpregado, dto);
+    }
+
+    @DeleteMapping("/empregados/{idEmpregado}")
+    public void deletarEmpregado(@PathVariable Integer idEmpregado){
+        this.empregadoService.deletarEmpregado(idEmpregado);
+    }
+
+
 }

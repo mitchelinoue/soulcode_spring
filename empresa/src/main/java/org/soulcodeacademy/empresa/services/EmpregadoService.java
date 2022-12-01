@@ -2,11 +2,13 @@ package org.soulcodeacademy.empresa.services;
 
 import org.soulcodeacademy.empresa.domain.Empregado;
 import org.soulcodeacademy.empresa.domain.Endereco;
+import org.soulcodeacademy.empresa.domain.Projeto;
 import org.soulcodeacademy.empresa.domain.dto.EmpregadoDTO;
 import org.soulcodeacademy.empresa.repositories.EmpregadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,12 +21,15 @@ public class EmpregadoService {
     @Autowired
     EnderecoService enderecoService;
 
+    @Autowired
+    ProjetoService projetoService;
+
     public List<Empregado> listarServ(){
         return this.empregadoRepository.findAll();
     }
 
 
-    public Empregado getEmpregadoServ(Integer idEmpregado){ // listar por id
+    public Empregado listarEmpregadoIdServ(Integer idEmpregado){ // listar por id
         Optional<Empregado> empregado = this.empregadoRepository.findById(idEmpregado);
 
         if(empregado.isEmpty()){
@@ -34,14 +39,43 @@ public class EmpregadoService {
         }
     }
 
-    public Empregado salvarServ(EmpregadoDTO dto){
+    public Empregado salvarEmpregadoServ(EmpregadoDTO dto){
 
-        Endereco endereco = this.enderecoService.getEnderecoServ(dto.getIdEndereço());
+        Endereco endereco = this.enderecoService.getEnderecoServ(dto.getIdEndereco());
 
         Empregado empregado = new Empregado(null, dto.getNome(), dto.getEmail(), dto.getSalario());
+
+        empregado.setEndereço(endereco);
 
         return this.empregadoRepository.save(empregado);
     }
 
+    public Empregado atualizarEmpregadoServ(Integer idEmpregado, EmpregadoDTO dto){
+        Empregado empregado = this.listarEmpregadoIdServ(idEmpregado);
+        Endereco endereco = this.enderecoService.getEnderecoServ(dto.getIdEndereco());
+        List<Projeto> projetos = new ArrayList<>();
+
+        for(Integer idProjeto : dto.getIdProjetos()){
+            Projeto projeto = this.projetoService.listarProjetoIdServ(idProjeto);
+            projetos.add(projeto);
+            }
+
+        empregado.setNome(dto.getNome());
+        empregado.setEmail(dto.getEmail());
+        empregado.setSalario(dto.getSalario());
+        empregado.setEndereço(endereco);
+        empregado.setProjetos(projetos);
+
+        return this.empregadoRepository.save(empregado);
+
+        }
+
+    public void deletarEmpregado(Integer idEmpregado){
+        Empregado empregado = this.listarEmpregadoIdServ(idEmpregado);
+        this.empregadoRepository.delete(empregado);
+    }
 
 }
+
+
+

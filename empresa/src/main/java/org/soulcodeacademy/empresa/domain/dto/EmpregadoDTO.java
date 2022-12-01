@@ -1,11 +1,13 @@
 package org.soulcodeacademy.empresa.domain.dto;
 
 import org.soulcodeacademy.empresa.domain.Endereco;
+import org.soulcodeacademy.empresa.domain.Projeto;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 public class EmpregadoDTO {
 
@@ -21,7 +23,9 @@ public class EmpregadoDTO {
     private Double salario;
 
     @NotNull(message = "idEndereço é obrigatorio")
-    private Integer idEndereço;
+    private Integer idEndereco;
+
+    private List<Integer> idProjetos;
 
     public String getNome() {
         return nome;
@@ -47,11 +51,19 @@ public class EmpregadoDTO {
         this.salario = salario;
     }
 
-    public Integer getIdEndereço() {
-        return idEndereço;
+    public Integer getIdEndereco() {
+        return idEndereco;
     }
 
-    public void setIdEndereço(Integer idEndereço) {
-        this.idEndereço = idEndereço;
+    public void setIdEndereco(Integer idEndereco) {
+        this.idEndereco = idEndereco;
+    }
+
+    public List<Integer> getIdProjetos() {
+        return idProjetos;
+    }
+
+    public void setIdProjetos(List<Integer> idProjetos) {
+        this.idProjetos = idProjetos;
     }
 }

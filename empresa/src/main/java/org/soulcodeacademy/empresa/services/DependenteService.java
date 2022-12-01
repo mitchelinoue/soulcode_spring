@@ -19,11 +19,11 @@ public class DependenteService {
     @Autowired
     EmpregadoService empregadoService;
 
-    public List<Dependente> listarServ(){ // listar todos
+    public List<Dependente> listarDependentesServ(){ // listar todos
         return this.dependenteRepository.findAll();
     }
 
-    public Dependente getDependenteServ(Integer idDependente){ //listar por id
+    public Dependente listarDependenteIdServ(Integer idDependente){ //listar por id
         Optional<Dependente> dependente = this.dependenteRepository.findById(idDependente);
 
         if(dependente.isEmpty()){
@@ -33,8 +33,8 @@ public class DependenteService {
         }
     }
 
-    public Dependente salvarServ(DependenteDTO dto){ // criar novo
-        Empregado empregado = this.empregadoService.getEmpregadoServ(dto.getIdResponsavel());
+    public Dependente salvarDependenteServ(DependenteDTO dto){ // criar novo
+        Empregado empregado = this.empregadoService.listarEmpregadoIdServ(dto.getIdResponsavel());
 
         Dependente dependente = new Dependente(null, dto.getNome(), dto.getIdade());
 
@@ -42,6 +42,24 @@ public class DependenteService {
 
         Dependente dependenteSalvo = this.dependenteRepository.save(dependente);
         return dependenteSalvo;
+    }
+
+    public Dependente atualizarDependenteServ(Integer idDependente, DependenteDTO dto){
+        Dependente dependente = this.listarDependenteIdServ(idDependente);
+        Empregado empregado = this.empregadoService.listarEmpregadoIdServ(dto.getIdResponsavel());
+
+        dependente.setNome(dto.getNome());
+        dependente.setIdade(dto.getIdade());
+        dependente.setResponsavel(empregado);
+
+        return this.dependenteRepository.save(dependente);
+
+    }
+
+    public void deletarDependenteServ(Integer idDependente){
+        Dependente dependente = this.listarDependenteIdServ(idDependente);
+
+        this.dependenteRepository.delete(dependente);
     }
 
 
