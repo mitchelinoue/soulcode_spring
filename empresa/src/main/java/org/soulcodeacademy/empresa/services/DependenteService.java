@@ -27,7 +27,7 @@ public class DependenteService {
         Optional<Dependente> dependente = this.dependenteRepository.findById(idDependente);
 
         if(dependente.isEmpty()){
-            throw new RuntimeException("O cargo não foi encontrado");
+            throw new RuntimeException("O dependente não foi encontrado");
         } else {
             return dependente.get();
         }

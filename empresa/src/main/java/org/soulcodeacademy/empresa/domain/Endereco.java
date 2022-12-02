@@ -4,10 +4,9 @@ import javax.persistence.*;
 
 @Entity
 public class Endereco {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idEndereço;
+    private Integer idEndereco;
 
     @Column(nullable = false)
     private String cidade;
@@ -17,18 +16,18 @@ public class Endereco {
 
     public Endereco() {}
 
-    public Endereco(Integer idEndereço, String cidade, String uf) {
-        this.idEndereço = idEndereço;
+    public Endereco(Integer idEndereco, String cidade, String uf) {
+        this.idEndereco = idEndereco;
         this.cidade = cidade;
         this.uf = uf;
     }
 
     public Integer getIdEndereco() {
-        return idEndereço;
+        return idEndereco;
     }
 
-    public void setIdEndereco(Integer idEndereço) {
-        this.idEndereço = idEndereço;
+    public void setIdEndereco(Integer idEndereco) {
+        this.idEndereco = idEndereco;
     }
 
     public String getCidade() {

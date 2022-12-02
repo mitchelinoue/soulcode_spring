@@ -1,13 +1,15 @@
 package org.soulcodeacademy.empresa.domain;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 
 @Entity
 public class Dependente {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer IdDependente;
+    private Integer idDependente;
 
     @Column(nullable = false, length = 120)
     private String nome;
@@ -16,23 +18,24 @@ public class Dependente {
     private Integer idade;
 
     @ManyToOne
-    @JoinColumn(name = "id_Responsavel", nullable = false)
-    public Empregado responsavel;
+    @OnDelete( action = OnDeleteAction.CASCADE )
+    @JoinColumn(name = "id_responsavel", nullable = false) // Cria a coluna "id_responsavel" em dependente
+    private Empregado responsavel;
 
-    public Dependente(){}
+    public Dependente() {}
 
     public Dependente(Integer idDependente, String nome, Integer idade) {
-        IdDependente = idDependente;
+        this.idDependente = idDependente;
         this.nome = nome;
         this.idade = idade;
     }
 
     public Integer getIdDependente() {
-        return IdDependente;
+        return idDependente;
     }
 
     public void setIdDependente(Integer idDependente) {
-        IdDependente = idDependente;
+        this.idDependente = idDependente;
     }
 
     public String getNome() {
@@ -58,5 +61,4 @@ public class Dependente {
     public void setResponsavel(Empregado responsavel) {
         this.responsavel = responsavel;
     }
-
 }

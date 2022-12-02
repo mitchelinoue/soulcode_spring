@@ -5,10 +5,9 @@ import java.util.Objects;
 
 @Entity
 public class Projeto {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer IdProjeto;
+    private Integer idProjeto;
 
     @Column(nullable = false)
     private String nome;
@@ -22,18 +21,18 @@ public class Projeto {
     public Projeto() {}
 
     public Projeto(Integer idProjeto, String nome, Double orcamento, String descricao) {
-        IdProjeto = idProjeto;
+        this.idProjeto = idProjeto;
         this.nome = nome;
         this.orcamento = orcamento;
         this.descricao = descricao;
     }
 
     public Integer getIdProjeto() {
-        return IdProjeto;
+        return idProjeto;
     }
 
     public void setIdProjeto(Integer idProjeto) {
-        IdProjeto = idProjeto;
+        this.idProjeto = idProjeto;
     }
 
     public String getNome() {
@@ -60,20 +59,19 @@ public class Projeto {
         this.descricao = descricao;
     }
 
-
     @Override
     public boolean equals(Object o) {
         // Compara se estão no mesmo local da memória
         if (this == o) return true;
         // Se o é nulo OU a classe dos dois for diferente então são diferentes
         if (o == null || getClass() != o.getClass()) return false;
-        Projeto projeto = (Projeto) o; // tenta converter o objeto genérico para Projeto
-        // se o ID dos objetos forem iguais, então os objetos são iguais
-        return IdProjeto.equals(projeto.IdProjeto);
+        Projeto projeto = (Projeto) o; // Tenta converter o objeto genérico para Projeto
+        // Se o ID dos objetos forem iguais então os objetos são iguais
+        return idProjeto.equals(projeto.idProjeto);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(IdProjeto);
+        return Objects.hash(idProjeto);
     }
 }
