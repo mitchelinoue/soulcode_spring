@@ -22,7 +22,7 @@ public class Empregado {
     @Column(nullable = false)
     private Double salario;
 
-    @OneToOne // 1:1 (Empregado-Endereço)
+    @OneToOne(cascade = CascadeType.REMOVE) // 1:1 (Empregado-Endereço)
     @JoinColumn(name = "id_endereco", nullable = false) // renomeia a coluna da FK
     private Endereco endereco;
 

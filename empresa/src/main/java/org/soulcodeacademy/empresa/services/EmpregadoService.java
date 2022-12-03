@@ -6,6 +6,8 @@ import org.soulcodeacademy.empresa.domain.Projeto;
 import org.soulcodeacademy.empresa.domain.dto.EmpregadoDTO;
 import org.soulcodeacademy.empresa.repositories.EmpregadoRepository;
 import org.soulcodeacademy.empresa.repositories.EnderecoRepository;
+import org.soulcodeacademy.empresa.services.errors.ParametrosInvalidosError;
+import org.soulcodeacademy.empresa.services.errors.RecursoNaoEncontradoError;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,7 +36,7 @@ public class EmpregadoService {
         Optional<Empregado> empregado = this.empregadoRepository.findById(idEmpregado);
 
         if(empregado.isEmpty()){
-            throw new RuntimeException("O empregado não foi encontrado");
+            throw new RecursoNaoEncontradoError("O empregado não foi encontrado");
         }else{
             return empregado.get();
         }
@@ -50,7 +52,7 @@ public class EmpregadoService {
             if(emp.getEndereco() != endereco){
                 empregado.setEndereco(endereco);
             }else{
-                throw new RuntimeException("Endereço em utilização");
+                throw new ParametrosInvalidosError("Endereço em utilização");
             }
         }
 
@@ -82,8 +84,6 @@ public class EmpregadoService {
         Empregado empregado = this.listarEmpregadoIdServ(idEmpregado);
         this.empregadoRepository.delete(empregado);
 
-        Endereco endereco = empregado.getEndereco();
-        this.enderecoService.deletarEnderecoServ(endereco.getIdEndereco());
     }
 
 }

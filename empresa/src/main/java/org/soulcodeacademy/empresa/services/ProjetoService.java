@@ -3,6 +3,7 @@ package org.soulcodeacademy.empresa.services;
 import org.soulcodeacademy.empresa.domain.Projeto;
 import org.soulcodeacademy.empresa.domain.dto.ProjetoDTO;
 import org.soulcodeacademy.empresa.repositories.ProjetoRepository;
+import org.soulcodeacademy.empresa.services.errors.RecursoNaoEncontradoError;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +24,7 @@ public class ProjetoService {
         Optional<Projeto> projeto = this.projetoRepository.findById(idProjeto);
 
         if(projeto.isEmpty()){
-            throw new RuntimeException("Projeto não encontrado");
+            throw new RecursoNaoEncontradoError("Projeto não encontrado");
         }else{
             return projeto.get();
         }
