@@ -1,13 +1,12 @@
 package org.soulcodeacademy.empresa.controllers.errors;
 
-import org.soulcodeacademy.empresa.services.errors.ParametrosInvalidosError;
-import org.soulcodeacademy.empresa.services.errors.RecursoNaoEncontradoError;
+import org.soulcodeacademy.empresa.repositories.services.errors.ParametrosInvalidosError;
+import org.soulcodeacademy.empresa.repositories.services.errors.RecursoNaoEncontradoError;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 

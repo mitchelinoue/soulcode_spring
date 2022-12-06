@@ -1,9 +1,9 @@
-package org.soulcodeacademy.empresa.services;
+package org.soulcodeacademy.empresa.repositories.services;
 
 import org.soulcodeacademy.empresa.domain.Endereco;
 import org.soulcodeacademy.empresa.domain.dto.EnderecoDTO;
 import org.soulcodeacademy.empresa.repositories.EnderecoRepository;
-import org.soulcodeacademy.empresa.services.errors.RecursoNaoEncontradoError;
+import org.soulcodeacademy.empresa.repositories.services.errors.RecursoNaoEncontradoError;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

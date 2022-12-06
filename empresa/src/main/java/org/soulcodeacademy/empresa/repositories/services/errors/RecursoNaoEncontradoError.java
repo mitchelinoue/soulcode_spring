@@ -1,4 +1,4 @@
-package org.soulcodeacademy.empresa.services.errors;
+package org.soulcodeacademy.empresa.repositories.services.errors;
 
 public class RecursoNaoEncontradoError extends RuntimeException{
 

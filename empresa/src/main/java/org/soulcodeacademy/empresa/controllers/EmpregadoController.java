@@ -2,7 +2,7 @@ package org.soulcodeacademy.empresa.controllers;
 
 import org.soulcodeacademy.empresa.domain.Empregado;
 import org.soulcodeacademy.empresa.domain.dto.EmpregadoDTO;
-import org.soulcodeacademy.empresa.services.EmpregadoService;
+import org.soulcodeacademy.empresa.repositories.services.EmpregadoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

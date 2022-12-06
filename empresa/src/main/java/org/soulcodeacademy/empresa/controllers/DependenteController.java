@@ -2,12 +2,11 @@ package org.soulcodeacademy.empresa.controllers;
 
 import org.soulcodeacademy.empresa.domain.Dependente;
 import org.soulcodeacademy.empresa.domain.dto.DependenteDTO;
-import org.soulcodeacademy.empresa.services.DependenteService;
+import org.soulcodeacademy.empresa.repositories.services.DependenteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.net.Inet4Address;
 import java.util.List;
 
 @RestController

@@ -2,7 +2,7 @@ package org.soulcodeacademy.empresa.controllers;
 
 import org.soulcodeacademy.empresa.domain.Endereco;
 import org.soulcodeacademy.empresa.domain.dto.EnderecoDTO;
-import org.soulcodeacademy.empresa.services.EnderecoService;
+import org.soulcodeacademy.empresa.repositories.services.EnderecoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
