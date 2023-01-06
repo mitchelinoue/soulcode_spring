@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import repositories.*;
 
 import javax.annotation.PostConstruct;
+import java.time.LocalDate;
 
 public class TesteService {
 
@@ -27,7 +28,7 @@ public class TesteService {
     @PostConstruct
     public void testarEntidades(){
 
-        Obra obra1 = new Obra(null, "SoulCode", 1500000);
+        Obra obra1 = new Obra(null, "SoulCode", 1500000, LocalDate.of(2022,10,01) );
         this.obraRepository.save(obra1);
 
         Engenheiro eng1 = new Engenheiro(null, "Mitchel", 32, "mitchel@email.com", 10000);

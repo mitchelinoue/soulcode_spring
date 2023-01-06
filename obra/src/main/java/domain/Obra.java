@@ -20,10 +20,11 @@ public class Obra {
     @JoinColumn(name = "id_engenheiro", nullable = false)
     private Engenheiro engenheiro;
 
-    public Obra(Integer idObra, String nomeObra, double orcamentoObra) {
+    public Obra(Integer idObra, String nomeObra, double orcamentoObra, LocalDate prazoObra) {
         this.idObra = idObra;
         this.nomeObra = nomeObra;
         this.orcamentoObra = orcamentoObra;
+        this.prazoObra = prazoObra;
     }
 
     public int getIdObra() {
